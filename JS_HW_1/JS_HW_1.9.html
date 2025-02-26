@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.9</title>  
+</head>
+<body>
+    <p>
+        9. Написать функцию, которая принимает количество секунд, перевод их в часы, минуты и секунды 
+        и возвращает в виде строки «чч:мм:сс».
+    </p>
+    <script>
+        function convertToTime(seconds) {
+            let hours = parseInt(seconds / 3600);
+            let minutes = parseInt((seconds % 3600) / 60);
+            let secs = seconds % 60;
+
+            let hh = (hours < 10 ? "0" : "") + hours;
+            let mm = (minutes < 10 ? "0" : "") + minutes;
+            let ss = (secs < 10 ? "0" : "") + secs;
+
+            return `${hh}:${mm}:${ss}`;
+        }
+
+        console.log(convertToTime(3661));
+        console.log(convertToTime(7322));
+        console.log(convertToTime(59));
+        console.log(convertToTime(86400));
+
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.4</title>  
+</head>
+<body>
+    <p>
+        4. Написать функцию, которая принимает длину и ширину прямоугольника и вычисляет его площадь. 
+        Если в функцию передали 1 параметр, то она вы­числяет площадь квадрата.
+    </p>
+    <script>
+        function calculateRectangleArea(length, width) {
+            let areaRectangle = length * width;
+            return areaRectangle;
+        }
+        
+        function calculateSquareArea(length) {
+            let areaSquare = length * length;
+            return areaSquare;
+        }
+        
+        function calculateArea(length, width) {
+            
+            let result = 0;
+
+            if (width == undefined) {
+                result = calculateSquareArea(length);
+            }
+            else {
+                result = calculateRectangleArea(length, width);
+            }
+            return result;
+        }
+        
+        console.log(calculateArea(3));
+        console.log(calculateArea(3, 5));
+
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>

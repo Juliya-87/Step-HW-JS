@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.8</title>  
+</head>
+<body>
+    <p>
+        8. Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
+    </p>
+    <script>
+        function convertToSeconds(hours, minutes, seconds) {
+            let timeSec = 0;
+            timeSec = hours * 3600 + minutes * 60 + seconds;
+            return timeSec;
+        }
+
+        console.log(convertToSeconds(2, 15, 10))
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>

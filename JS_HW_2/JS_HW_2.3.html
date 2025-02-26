@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2.3</title>
+      
+</head>
+<body>
+    
+    <h3>Завдання 3</h3>
+    <script>
+        const arrStyles = [ 
+            { name: "color", value: "blue" }, 
+            { name: "font-size", value: "12px" }, 
+            { name: "text-align", value: "center" },
+            { name: "text-decoration'", value: "underline" },
+            { name: "font-weight", value: "bold" }
+        ];
+
+        let text = "Створити масив стилів CSS (колір, розмір шрифту, вирівнювання, підкреслення тощо).<br> Кожен елемент масиву — це об'єкт, що складається з двох властивостей: назви стилю і значення стилю.<br>І напишіть функцію, яка отримує масив стилів і текст і виводить цей текст за допомогою document.write() <br> в тегах, додавши до відкриваючого тегу атрибут style з усіма стилями, перерахованими в масиві.";
+
+        function applyStyles(arrStyles, text) {
+            let styles = " ";
+
+            arrStyles.forEach(element => {
+                styles += element.name + ": " + element.value + "; ";
+            });
+
+            document.write(`<p style="${styles}">${text}</p>`);
+        }
+
+        applyStyles(arrStyles, text);
+
+    </script>
+</body>
+</html>

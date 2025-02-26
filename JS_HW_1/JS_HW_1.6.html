@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.6</title>  
+</head>
+<body>
+    <p>
+        6. Написать функцию, которая принимает минимальное и максимальное значения для диапазона 
+        и выводит только те числа из диапазона, которые являются совершенными. 
+        Используйте написанную ранее функцию, чтоб узнавать совершенное число или нет.
+    </p>
+    <script>
+        function isPerfectNumber(num) {
+            
+            let sum = 0;
+    
+            for (let i = 1; i < num; i++) {
+                if (num % i === 0) {
+                    sum += i;
+                }
+            }
+            
+            return sum === num;
+        }
+
+        function findPerfectNumbers(min, max) {
+            let perfNums = [];
+
+            for (let i = min; i < max + 1; i++) {
+                if (isPerfectNumber(i))
+                perfNums.push(i);
+            }
+
+            return perfNums;
+        }
+
+        console.log(findPerfectNumbers(1, 500));
+
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>

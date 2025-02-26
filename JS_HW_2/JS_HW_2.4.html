@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2.4</title>
+      
+</head>
+<body>
+    
+    <h3>Завдання 4</h3>
+    <p>Створіть масив аудиторій академії. .<br>
+        Об'єкт аудиторії складається з назви, кількості місць (від 10 до 20) та назви кафедри, 
+        для якої вона призначена.<br>
+        Напишіть декілька функцій для роботи з ним.<br>
+        1. Вивести всі аудиторії.<br>
+        2. Відобразити аудиторії для вказаного факультету.<br>
+        3. Відобразити тільки ті аудиторії, які підходять для переведеної групи.
+            Об'єкт-група складається з назви, кількості студентів та назви кафедри.<br>
+        4. Функція сортування аудиторій за кількістю місць.<br>
+        5. Функція сортування аудиторій за назвою (за алфавітом).<br>
+    </p>
+    <hr>
+
+<h3>Audience</h3>
+
+    <script>
+        let list = [ 
+            { name: "CAudience1", places: 20, departmentName: "Department1" }, 
+            { name: "bAudience2", places: 10, departmentName: "Department2" }, 
+            { name: "Audience3", places: 15, departmentName: "Department3" },
+            { name: "WAudience4", places: 12, departmentName: "Department3" },
+            { name: "audience5", places: 19, departmentName: "Department3" },
+        ];
+
+        document.write("<strong> List of all audiences: </strong> <br>");
+        
+        function showList() {
+            for (let key in list) {
+                document.write(
+                    list[key].name + " - Places: " + list[key].places + " - Department: " + list[key].departmentName + "<br>");
+            }
+        }
+
+        showList();
+
+        document.write("<br> <strong> List of classrooms for the specified department: </strong> <br>");
+
+        function displayAudienceByDepartment(depName) {
+
+            for (let item of list) {
+                if (item.departmentName === depName) {
+                    document.write(
+                        item.name + " - Places: " + item.places + " - Department: " + item.departmentName + "<br>");
+                }
+            }
+        }
+
+        displayAudienceByDepartment("Department3");
+
+        document.write("<br> <strong> Sorted list of auditoriums by number of seats: </strong> <br>");
+
+        function showSortedListByPlaces() {
+
+            for (let key in list) {
+                list.sort((a, b) => a.places - b.places); 
+                document.write(
+                    list[key].name + " - Places: " + list[key].places + " - Department: " + list[key].departmentName + "<br>");
+            }
+        }
+
+        showSortedListByPlaces();
+
+        document.write("<br> <strong> Sorted list of audiences by name (alphabetically): </strong> <br>");
+
+        function showSortedListByAudienceName() {
+            for (let key in list) {
+                list.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+                    document.write(
+                        list[key].name + " - Places: " + list[key].places + " - Department: " + list[key].departmentName + "<br>");
+            }
+        }
+        
+        showSortedListByAudienceName();
+
+
+        let groups = [
+            {name: "Group10", studentsNumber: 20, departmentName: "Department1"},
+            {name: "Group20", studentsNumber: 17, departmentName: "Department2"},
+            {name: "Group30", studentsNumber: 11, departmentName: "Department3"},
+            {name: "Group40", studentsNumber: 19, departmentName: "Department3"},
+            {name: "Group50", studentsNumber: 10, departmentName: "Department1"},
+        ]
+
+        function findGroup(groupName) {
+            let existGroup = groups.find(({ name }) => name === groupName);
+            if (existGroup) {
+                return existGroup;
+            }
+            else {
+                document.write("<br>" + groupName + " not found <br>")
+            }
+        }
+
+        let existGroup = findGroup("Group10");
+
+        document.write(`<br> <strong> List of audiences suitable for group ${existGroup.name} with number of students ${existGroup.studentsNumber} of departments "${existGroup.departmentName}": </strong> <br>`);
+        
+        function showSuitableAudience(existGroup) {
+            let suitableValues = list.filter(audience => audience.departmentName === existGroup.departmentName && audience.places >= existGroup.studentsNumber);
+            return suitableValues;
+        }
+
+        if (existGroup) {
+            let suitableAudiences = showSuitableAudience(existGroup);
+                
+            suitableAudiences.forEach(audience => {
+                document.write(audience.name + " - Places: " + audience.places + " - Department: " + audience.departmentName + "<br>");
+            });
+        }
+        else {
+            document.write("No suitable audience found for " + existGroup.name);
+        }
+
+            
+    </script>
+</body>
+</html>

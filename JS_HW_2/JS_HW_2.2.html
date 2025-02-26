@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2.2</title>
+      
+</head>
+<body>
+    
+    <h3>Завдання 2</h3>
+    <p>
+        Створити масив, який описує чек в магазині.<br>
+        Кожен елемент масиву складається з назви товару, його кількості та ціни за одиницю.<br> 
+        Напишіть наступні функції.<br>
+        1. Виведення чека на екран.<br>
+        2. Обчислення загальної суми покупки.<br>
+        3. Отримання найдорожчої покупки у чеку.<br>
+        4. Обчислення середньої вартості одного товару в чеку.<br>
+    </p>
+    <hr>
+
+    <h3>Check</h3>
+    <script>
+        let list = [ 
+            { name: "Item1", quantity: 1, price: 120 }, 
+            { name: "Item2", quantity: 2, price: 20 }, 
+            { name: "Item3", quantity: 3, price: 25.50 },
+            { name: "Item4", quantity: 4, price: 11.30 },
+            { name: "Item5", quantity: 15, price: 15 },
+        ];
+
+        function showList() {
+            for (let key in list) {
+                document.write(
+                    list[key].name + " - Quantity: " + list[key].quantity + " - Price: " + list[key].price + "<br>");
+            }
+        }
+
+        showList();
+
+        function calcTotalPrice() {
+            let totalPrice = 0;
+            for (let item of list) {
+                totalPrice += item.price * item.quantity; 
+            }
+            return totalPrice;
+        }
+
+        function showTotalPrice() {
+            document.write("<br> Total purchase amount: " + calcTotalPrice() + "<br>");
+        };
+
+        showTotalPrice();
+
+        function calcMostExpensivePurchase() {
+            let purchasePrice = 0;
+            let maxPurchaseAmount = 0;
+
+            for (let item of list) {
+                purchasePrice = item.price * item.quantity;
+                if  (maxPurchaseAmount < purchasePrice) {
+                    maxPurchaseAmount = purchasePrice;
+                }
+            }
+            return maxPurchaseAmount;
+        }
+        function showMostExpensivePurchase() {
+            document.write("<br> The most expensive purchase on the check: " + calcMostExpensivePurchase() + "<br>");
+        };
+
+        showMostExpensivePurchase();
+
+        function calcAveragePrice() {
+            let averagePrice = 0;
+            let sumPrice = 0;
+            for (let item of list) {
+                sumPrice += item.price; 
+            }
+            
+            return sumPrice / list.length;
+        }
+
+        function showAveragePrice() {
+            document.write("<br> Average cost of goods in the check: " + calcAveragePrice() + "<br>");
+        };
+
+        showAveragePrice();
+    </script>
+</body>
+</html>

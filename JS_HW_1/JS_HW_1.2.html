@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.2</title>
+      
+</head>
+<body>
+    <p>
+        2. Написать функцию, которая вычисляет факториал переданного ей числа.
+    </p>
+    <p><b>A window will appear for you to enter a number to calculate its factorial.</b></p>
+    <script>
+        function factorial(num) {
+
+            let result = 1;
+            for (let i = 1; i <= num; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        setTimeout(function() {
+            user_prompt = parseInt(prompt('Enter number: '));
+            alert(`Factorial ${user_prompt} = ${factorial(user_prompt)}`);
+        }, 
+        5000);
+
+    </script>
+</body>
+</html>

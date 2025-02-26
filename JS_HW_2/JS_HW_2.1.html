@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW2.1</title>
+      
+</head>
+<body>
+    
+    <h3>Завдання 1</h3>
+    <p>
+        Створити масив «список покупок». Кожен елемент масиву є об'єктом, який містить назву товару, 
+        необхідну кількість і те, чи був він куплений чи ні.<br>
+        Напишіть декілька функцій для роботи з таким масивом.<br>
+        1. Виведення всього списку на екран таким чином, щоб спочатку йшли не куплені товари, а потім куплені.<br>
+        2. Додавання покупки до списку. Зверніть увагу, що при додаванні покупки з уже існуючим товаром у списку, <br>
+           потрібно збільшити кількість в існуючій покупці, а не додавати нову.<br>
+        3. Придбання товару. Функція отримує назву товару і позначає його як куплений.
+    </p>
+    <hr>
+
+    <h3>Shopping list</h3>
+    <script>
+        let list = [ 
+            { name: "Item1", quantity: 1, bought: true }, 
+            { name: "Item2", quantity: 2, bought: false }, 
+            { name: "Item3", quantity: 3, bought: true },
+            { name: "Item4", quantity: 4, bought: true },
+        ];
+
+        function showList () {
+            for (let key in list) {
+                document.write(
+                    list[key].name + " - Quantity: " + list[key].quantity + " - Bought: " + (list[key].bought ? "Yes" : "No") + "<br>");
+            }
+        }        
+
+        document.write("<strong> Sorted list with purchased items on top: </strong> <br>");
+
+        function showSortedList () {
+            for (let key in list) {
+                list.sort((a, b) => a.bought - b.bought); 
+                document.write(
+                    list[key].name + " - Quantity: " + list[key].quantity + " - Bought: " + (list[key].bought ? "Yes" : "No") + "<br>");
+            }
+        }
+
+        showSortedList();
+        
+        let itemToAdd = "Item4";
+        let itemToAddQuantity = 2;
+        document.write(`<br> <strong> List with new item "${itemToAdd}" in a quantity of ${itemToAddQuantity}: </strong> <br>`);
+
+        function addItem () {
+            let newItem = {name: itemToAdd, quantity: itemToAddQuantity, bought: false};
+            let existItem = list.find(({ name }) => name === newItem.name);
+
+            if (existItem) {
+                existItem.quantity += newItem.quantity;
+                if (newItem.bought !== existItem.bought) {
+                    existItem.bought = newItem.bought
+                }
+            } 
+            else {
+                list.push(newItem);
+            }
+        }
+        addItem(list);
+        showSortedList();
+
+        let itemToBuy = "Item2";
+        document.write(`<br> <strong> List after purchesing "${itemToBuy}": </strong> <br>`);
+
+        function buyItem(itemName) {
+            let existingItem = list.find(({ name }) => name === itemName);
+            if (existingItem) {
+                existingItem.bought = true;
+            }
+        }
+
+        buyItem(itemToBuy);
+        showSortedList();
+    </script>
+</body>
+</html>

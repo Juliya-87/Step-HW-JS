@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.10</title>  
+</head>
+<body>
+    <p>
+        10. Написать функцию, которая считает разницу между датами. 
+        Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки 
+        «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2 заданий: 
+        сначала обе даты переведите в секунды, узнайте разницу в секундах, 
+        а потом разницу переведите обратно в «чч:мм:сс».
+    </p>
+    <script>
+
+        function convertToSeconds(hours, minutes, seconds) {
+            let timeSec = 0;
+            timeSec = hours * 3600 + minutes * 60 + seconds;
+            return timeSec;
+        }
+
+        function convertToTime(seconds) {
+            let hours = parseInt(seconds / 3600);
+            let minutes = parseInt((seconds % 3600) / 60);
+            let secs = seconds % 60;
+
+            let hh = (hours < 10 ? "0" : "") + hours;
+            let mm = (minutes < 10 ? "0" : "") + minutes;
+            let ss = (secs < 10 ? "0" : "") + secs;
+
+            return `${hh}:${mm}:${ss}`;
+        }
+
+        function timeDifference(h1, m1, s1, h2, m2, s2) {
+            let time1 = convertToSeconds(h1, m1, s1);
+            let time2 = convertToSeconds(h2, m2, s2);
+            
+            let diff = Math.abs(time1 - time2);
+
+            return convertToTime(diff);
+        }
+
+        console.log(timeDifference(12, 30, 15, 14, 45, 20));
+
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>

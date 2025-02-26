@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW1.7</title>  
+</head>
+<body>
+    <p>
+        7. Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс». 
+        Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
+    </p>
+    <script>
+        function formatTime(hours, minutes = 0, seconds = 0) {
+            let hh = (hours < 10 ? "0" : "") + hours;
+            let mm = (minutes < 10 ? "0" : "") + minutes;
+            let ss = (seconds < 10 ? "0" : "") + seconds;
+
+            return `${hh}:${mm}:${ss}`;
+        }
+
+        console.log(formatTime(9));
+        console.log(formatTime(12, 5));
+        console.log(formatTime(7, 30, 45));
+        console.log(formatTime(23, 59, 59));
+
+    </script>
+    <p> Please, see result in the Console</p>
+</body>
+</html>
