@@ -1,0 +1,11 @@
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.clock-container img {
+    width: 50px;
+    height: auto;
+}
